@@ -7,7 +7,7 @@
     <th>Price</th>
     <th></th>
   </tr>
-
+<%= I18n.t("errors.messages.greater_than_or_equal_to", count: 0.01) %>
 <% @products.each do |product| %>
   <tr class="<%= cycle('list_line_odd','list_line_even') %>">
 
