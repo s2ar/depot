@@ -2,7 +2,9 @@ ru:
   image:
     error:
       extension: 'URL должен указывать на изображение формата GIF, JPG или PNG'
-
+  product:
+    error:
+      existing_product: 'Существуют товарные позиции'
   date:
     abbr_day_names:
     - Вс
