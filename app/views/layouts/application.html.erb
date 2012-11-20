@@ -18,7 +18,8 @@
 			<li><a href="/faq">Questions</a></li>
 			<li><a href="/news">News</a></li>
 			<li><a href="/contact">Contact</a></li>
-		</ul>	
+		</ul>
+		<span class="time"><%= l Time.now, :format => :short  %></span>	
 	</div>
 	<div id="main"><%= yield %></div>
 </div>
