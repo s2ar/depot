@@ -11,4 +11,8 @@ class ApplicationController < ActionController::Base
   	cart	
   end
 
+  def destroy_cart
+  	current_cart.destroy
+  end
+
 end

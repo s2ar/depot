@@ -35,7 +35,7 @@
   background: #141;
 
   #main {
-    margin-left: 17em;
+    margin-left: 20em;
     padding: 1em;
     background: white;
   }
@@ -47,8 +47,26 @@
   #side {
     float: left;
     padding: 1em 2em;
-    width: 13em;
+    width: 16em;
     background: #141;
+
+    form, div{
+      display: inline;
+    }
+
+    input {
+      font-size: small;
+    }
+    #cart {
+      font-size: smaller;
+      color: white;
+      table{
+        border-top: 1px dotted #565;
+        border-bottom: 1px dotted #565;
+        margin-bottom: 10px;
+        a { color: #BFB;}
+      }
+    }
 
     ul {
       padding: 0;

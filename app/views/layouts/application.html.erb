@@ -13,11 +13,17 @@
 	</div>
 <div id="columns">
 	<div id="side">
+		<%= hidden_div_if(@cart.line_items.empty?, id:'cart') do %>
+			<%= render @cart %>
+		<% end %>
+
 		<ul>
 			<li><a href="/">Home</a></li>
 			<li><a href="/faq">Questions</a></li>
 			<li><a href="/news">News</a></li>
 			<li><a href="/contact">Contact</a></li>
+			---------------------------------------
+			<li><a href="/products/new">Add</a></li>
 		</ul>
 		<span class="time"><%= l Time.now, :format => :short  %></span>	
 	</div>

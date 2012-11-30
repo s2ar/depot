@@ -13,12 +13,17 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
-    @product = Product.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @product }
-    end
+    begin
+      @product = Product.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      logger.error I18n.t("Attempt to access a nonexistent product #{params[:id]}")
+      redirect_to store_url, notice: I18n.t("nonexistent product")
+    else  
+      respond_to do |format|
+        format.html # show.html.erb
+        format.json { render json: @product }
+      end
+    end  
   end
 
   # GET /products/new
