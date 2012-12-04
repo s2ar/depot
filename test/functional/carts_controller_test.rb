@@ -3,6 +3,7 @@ require 'test_helper'
 class CartsControllerTest < ActionController::TestCase
   setup do
     @cart = carts(:one)
+    @request.env['HTTP_REFERER']
   end
 
   test "should get index" do
@@ -26,7 +27,7 @@ class CartsControllerTest < ActionController::TestCase
 
   test "should show cart" do
     get :show, id: @cart.to_param
-    assert_response :success
+    assert_response :success 
   end
 
   test "should get edit" do

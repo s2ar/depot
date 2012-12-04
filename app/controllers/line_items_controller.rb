@@ -45,7 +45,6 @@ class LineItemsController < ApplicationController
     product = Product.find(params[:product_id])
     @line_item = @cart.add_product(product.id)
 
-
     respond_to do |format|
       if @line_item.save
         format.html { redirect_to store_url }
@@ -85,4 +84,28 @@ class LineItemsController < ApplicationController
       format.json { head :ok }
     end
   end
+
+  # PUT
+  def decrement
+   # render text: params[:id]
+    @line_item = LineItem.find(params[:id])
+    quantity_new = @line_item.quantity - 1
+    if quantity_new < 1
+      @line_item.destroy
+    else
+      @line_item.update_attributes(quantity: quantity_new)  
+    end
+    redirect_to store_url
+  end
+
+  # PUT
+  def increment
+   # render text: params[:id]
+    @line_item = LineItem.find(params[:id])
+    quantity_new = @line_item.quantity + 1   
+    @line_item.update_attributes(quantity: quantity_new)      
+    redirect_to store_url
+  end
+
+
 end

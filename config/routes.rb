@@ -1,11 +1,16 @@
 Depot::Application.routes.draw do
   resources :line_items
-
   resources :carts
 
   get "store/index"
 
   resources :products
+
+  resources :line_items do
+    put :decrement, :on => :member
+    put :increment, :on => :member
+  end
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

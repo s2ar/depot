@@ -16,9 +16,9 @@ class CartsController < ApplicationController
     begin
       @cart = Cart.find(params[:id])
 
-      puts "+++++++++++++++++++++++++++++++++++++++++++++++"
-      puts YAML::dump(@cart.line_items.count) 
-      puts "+++++++++++++++++++++++++++++++++++++++++++++++"
+      #puts "+++++++++++++++++++++++++++++++++++++++++++++++"
+      #puts YAML::dump(@cart.line_items.count) 
+      #puts "+++++++++++++++++++++++++++++++++++++++++++++++"
     rescue ActiveRecord::RecordNotFound
       logger.error I18n.t("Attempt to access a nonexistent basket #{params[:id]}")
       redirect_to store_url, notice: I18n.t("nonexistent basket")
@@ -93,6 +93,7 @@ class CartsController < ApplicationController
     session[:cart_id] = nil
     respond_to do |format|
       format.html { redirect_to store_url}
+      format.js
       format.json { head :ok }
     end
   end
