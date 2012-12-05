@@ -95,7 +95,14 @@ class LineItemsController < ApplicationController
     else
       @line_item.update_attributes(quantity: quantity_new)  
     end
-    redirect_to store_url
+    @cart = current_cart
+    respond_to do |format|
+      format.html { redirect_to store_url }
+      format.js do  
+        @current_item = @line_item 
+        render action: "crement"
+      end    
+    end
   end
 
   # PUT
@@ -104,7 +111,16 @@ class LineItemsController < ApplicationController
     @line_item = LineItem.find(params[:id])
     quantity_new = @line_item.quantity + 1   
     @line_item.update_attributes(quantity: quantity_new)      
-    redirect_to store_url
+    
+    @cart = current_cart
+    respond_to do |format|
+      format.html { redirect_to store_url }
+      format.js do  
+        @current_item = @line_item 
+        render action: "crement"
+      end    
+    end
+
   end
 
 
