@@ -21,7 +21,7 @@ class OrdersControllerTest < ActionController::TestCase
   test "should get new" do
     cart = Cart.create
     session[:cart_id] = cart.id
-    LineItem.create(cart: cart, products(:ruby))
+    LineItem.create(cart: cart, products: products(:ruby))
     get :new
     assert_response :success
   end
@@ -31,7 +31,7 @@ class OrdersControllerTest < ActionController::TestCase
       post :create, order: @order.attributes
     end
 
-    assert_redirected_to order_path(assigns(:order))
+    assert_redirected_to store_path
   end
 
   test "should show order" do

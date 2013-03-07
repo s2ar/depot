@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  before_filter :authorize
   protect_from_forgery
 
   private 
@@ -13,6 +14,14 @@ class ApplicationController < ActionController::Base
 
   def destroy_cart
   	current_cart.destroy
+  end
+
+  protected
+
+  def authorize
+    unless User.find_by_id(session[:user_id]) 
+      redirect_to login_url, notice: "Please, sign in"  
+    end
   end
 
 end
